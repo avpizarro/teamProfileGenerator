@@ -1,0 +1,32 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "An app to generate a team profile",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avpizarro/teamProfileGenerator.git"
+  },
+  "keywords": [
+    "team",
+    "generator",
+    "management"
+  ],
+  "author": "avpizarro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avpizarro/teamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/avpizarro/teamProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  }
+}
