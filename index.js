@@ -1,10 +1,10 @@
 const inquirer = require("inquirer");
-const js = require("fs");
+const fs = require("fs");
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-// const render = require("./render.js")
+const render = require("./lib/render.js")
 
 let managers = [];
 let engineers = [];
@@ -40,12 +40,17 @@ function getManagerInfo() {
       },
     ])
     .then((answers) => {
-      managers.push(answers.empName, answers.id, answers.email, answers.officeNumber);
-      console.log(managers);
+        var manager = {name: answers.empName, role: 'Manager', id: answers.id, email: answers.email, officeNumber: answers.officeNumber}
+    managers.push(manager);  
+    console.log(managers);
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
+      } else {
+          fs.writeFile('myTeam.html', render(answers), (err) =>
+          err ? console.log(err) : console.log('Success!')
+          );
       } 
     });
 }
@@ -80,8 +85,10 @@ function getEngineerInfo() {
       },
     ])
     .then((answers) => {
-      engineers.push(answers.empName, answers.id, answers.email, answers.github);
-      console.log(engineers);
+        var engineer = {name: answers.empName, role: 'Engineer', id: answers.id, email: answers.email, gitHub: answers.github}
+     engineers.push(engineer);  
+    console.log(engineers);
+    
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
       } else if (answers.addEmployee == "Intern") {
@@ -120,7 +127,8 @@ function getInternInfo() {
       },
     ])
     .then((answers) => {
-      interns.push(answers.empName, answers.id, answers.email, answers.school);
+        var intern = {name: answers.empName, role: 'Intern', id: answers.id, email: answers.email, school: answers.school}
+      interns.push(intern);
       console.log(interns);
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();

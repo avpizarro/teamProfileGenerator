@@ -1,5 +1,4 @@
-function render(answers) {
-    return ` 
+ 
     <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,13 +27,13 @@ function render(answers) {
       <div class="col s6 m4 l3 xl2">
       <div class="card small">
         <div class="card-content black-text">
-          <h6 class="card-title">${answers.empName}
+          <h6 class="card-title">John Bo
             <div><i class="fas fa-mug-hot"></i>Manager</div>
           </h6>
-          <div class="details emp-id">ID: ${answers.id}</div>
-          <div class="details contact" type="email">Email: ${answers.email}</div>
+          <div class="details emp-id">ID: 123</div>
+          <div class="details contact" type="email">Email: jbo@example.com</div>
           <div class="details office-number">
-            Office number: ${answers.officeNumber}
+            Office number: 12
           </div>
         </div>
       </div>
@@ -44,7 +43,3 @@ function render(answers) {
   </body>
 </html>
 
-`
-}
-
-module.exports = render;
