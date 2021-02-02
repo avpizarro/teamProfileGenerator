@@ -1,11 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const renderManager = require("./lib/Manager.js");
-const renderEngineer = require("./lib/Engineer.js");
-const renderIntern = require("./lib/Intern.js");
+const renderEngineers = require("./lib/Engineers.js");
+const renderInterns = require("./lib/Interns.js");
 const renderStart = require("./lib/renderStart.js");
 const renderEnd = require("./lib/renderEnd.js");
-
 
 let manager = {};
 let engineer = {};
@@ -56,10 +55,11 @@ function getManagerInfo() {
         getEngineerInfo();
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
-      } 
-      else {
-        fs.writeFile("myTeam.html", renderStart()+ renderManager(manager) + renderEnd(), (err) =>
-          err ? console.log(err) : console.log("Success!")
+      } else {
+        fs.writeFile(
+          "myTeam.html",
+          renderStart() + renderManager(manager) + renderEnd(),
+          (err) => (err ? console.log(err) : console.log("Success!"))
         );
       }
     });
@@ -111,8 +111,14 @@ function getEngineerInfo() {
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
       } else {
-        fs.writeFile("myTeam.html", renderStart() + renderManager(manager) + renderEngineer(engineer) + renderEnd(), (err) =>
-          err ? console.log(err) : console.log("Success!")
+        fs.writeFile(
+          "myTeam.html",
+          renderStart() +
+            renderManager(manager) +
+            renderEngineers(engineers) +
+            renderInterns(interns) +
+            renderEnd(),
+          (err) => (err ? console.log(err) : console.log("Success!"))
         );
       }
     });
@@ -162,8 +168,14 @@ function getInternInfo() {
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
       } else {
-        fs.writeFile("myTeam.html", renderStart() + renderManager(manager) + renderEngineer(engineer) + renderIntern(intern) + renderEnd(), (err) =>
-          err ? console.log(err) : console.log("Success!")
+        fs.writeFile(
+          "myTeam.html",
+          renderStart() +
+            renderManager(manager) +
+            renderEngineers(engineers) +
+            renderInterns(interns) +
+            renderEnd(),
+          (err) => (err ? console.log(err) : console.log("Success!"))
         );
       }
     });
