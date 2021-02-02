@@ -4,11 +4,16 @@ const Employee = require("./lib/Employee.js");
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
+const renderManager = require("./lib/Manager.js");
 const renderEngineer = require("./lib/Engineer.js");
 const renderIntern = require("./lib/Intern.js");
-const render = require("./lib/render.js");
+const renderStart = require("./lib/renderStart.js");
+const renderEnd = require("./lib/renderEnd.js");
 
-let managers = [];
+
+let manager = {};
+let engineer = {};
+let intern = {};
 let engineers = [];
 let interns = [];
 
@@ -42,21 +47,22 @@ function getManagerInfo() {
       },
     ])
     .then((answers) => {
-      var manager = {
+      manager = {
         name: answers.empName,
         role: "Manager",
         id: answers.id,
         email: answers.email,
         officeNumber: answers.officeNumber,
       };
-      managers.push(manager);
-      console.log(managers);
+      console.log(manager);
+
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
-      } else {
-        fs.writeFile("myTeam.html", render(answers), (err) =>
+      } 
+      else {
+        fs.writeFile("myTeam.html", renderStart()+ renderManager(manager) + renderEnd(), (err) =>
           err ? console.log(err) : console.log("Success!")
         );
       }
@@ -93,7 +99,7 @@ function getEngineerInfo() {
       },
     ])
     .then((answers) => {
-      var engineer = {
+      engineer = {
         name: answers.empName,
         role: "Engineer",
         id: answers.id,
@@ -108,7 +114,7 @@ function getEngineerInfo() {
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
       } else {
-        fs.appendFileSync("myTeam.html", renderEngineer(answers), (err) =>
+        fs.writeFile("myTeam.html", renderStart() + renderManager(manager) + renderEngineer(engineer) + renderEnd(), (err) =>
           err ? console.log(err) : console.log("Success!")
         );
       }
@@ -145,7 +151,7 @@ function getInternInfo() {
       },
     ])
     .then((answers) => {
-      var intern = {
+      intern = {
         name: answers.empName,
         role: "Intern",
         id: answers.id,
@@ -159,7 +165,7 @@ function getInternInfo() {
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
       } else {
-        fs.appendFileSync("myTeam.html", renderIntern(answers), (err) =>
+        fs.writeFile("myTeam.html", renderStart() + renderManager(manager) + renderEngineer(engineer) + renderIntern(intern) + renderEnd(), (err) =>
           err ? console.log(err) : console.log("Success!")
         );
       }
