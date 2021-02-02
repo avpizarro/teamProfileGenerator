@@ -31,7 +31,7 @@ Github pages link: https://avpizarro.github.io/teamProfileGenerator/
   If a copy of the License was not distributed with this file, You can obtain one at https://opensource.org/licenses
 
   ## Contributing
-  Please for the repository if you want to help simplify the code, then submit the changes for approval.
+  Please fork the repository if you want to help simplify the code, then submit the changes for approval.
 
   ## Tests
   use the npm test command to run the tests
