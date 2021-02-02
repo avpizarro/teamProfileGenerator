@@ -1,9 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Employee = require("./lib/Employee.js");
-const Manager = require("./lib/Manager.js");
-const Engineer = require("./lib/Engineer.js");
-const Intern = require("./lib/Intern.js");
 const renderManager = require("./lib/Manager.js");
 const renderEngineer = require("./lib/Engineer.js");
 const renderIntern = require("./lib/Intern.js");
@@ -104,13 +100,14 @@ function getEngineerInfo() {
         role: "Engineer",
         id: answers.id,
         email: answers.email,
-        gitHub: answers.github,
+        github: answers.github,
       };
       engineers.push(engineer);
       console.log(engineers);
 
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
+        console.log(engineers);
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
       } else {
