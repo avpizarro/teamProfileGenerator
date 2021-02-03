@@ -49,8 +49,6 @@ function getManagerInfo() {
         answers.officeNumber
       );
 
-      console.log(manager);
-
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
       } else if (answers.addEmployee == "Intern") {
@@ -106,7 +104,6 @@ function getEngineerInfo() {
 
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
-        console.log(engineers);
       } else if (answers.addEmployee == "Intern") {
         getInternInfo();
       } else {
