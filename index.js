@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const renderManager = require("./lib/Manager.js");
-const renderEngineers = require("./lib/Engineers.js");
-const renderInterns = require("./lib/Interns.js");
+const man = require("./lib/Manager.js");
+const eng = require("./lib/Engineer.js");
+const int = require("./lib/Intern.js");
 const renderStart = require("./lib/renderStart.js");
 const renderEnd = require("./lib/renderEnd.js");
 
@@ -42,13 +42,13 @@ function getManagerInfo() {
       },
     ])
     .then((answers) => {
-      manager = {
-        name: answers.empName,
-        role: "Manager",
-        id: answers.id,
-        email: answers.email,
-        officeNumber: answers.officeNumber,
-      };
+      manager = new man.Manager(
+        answers.empName,
+        answers.id,
+        answers.email,
+        answers.officeNumber
+      );
+
       console.log(manager);
 
       if (answers.addEmployee == "Engineer") {
@@ -58,7 +58,7 @@ function getManagerInfo() {
       } else {
         fs.writeFile(
           "myTeam.html",
-          renderStart() + renderManager(manager) + renderEnd(),
+          renderStart() + man.renderManager(manager) + renderEnd(),
           (err) => (err ? console.log(err) : console.log("Success!"))
         );
       }
@@ -95,15 +95,14 @@ function getEngineerInfo() {
       },
     ])
     .then((answers) => {
-      engineer = {
-        name: answers.empName,
-        role: "Engineer",
-        id: answers.id,
-        email: answers.email,
-        github: answers.github,
-      };
+      engineer = new eng.Engineer(
+        answers.empName,
+        answers.id,
+        answers.email,
+        answers.github
+      );
+
       engineers.push(engineer);
-      console.log(engineers);
 
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
@@ -114,9 +113,9 @@ function getEngineerInfo() {
         fs.writeFile(
           "myTeam.html",
           renderStart() +
-            renderManager(manager) +
-            renderEngineers(engineers) +
-            renderInterns(interns) +
+            man.renderManager(manager) +
+            eng.renderEngineers(engineers) +
+            int.renderInterns(interns) +
             renderEnd(),
           (err) => (err ? console.log(err) : console.log("Success!"))
         );
@@ -154,15 +153,15 @@ function getInternInfo() {
       },
     ])
     .then((answers) => {
-      intern = {
-        name: answers.empName,
-        role: "Intern",
-        id: answers.id,
-        email: answers.email,
-        school: answers.school,
-      };
+      intern = new int.Intern(
+        answers.empName,
+        answers.id,
+        answers.email,
+        answers.school
+      );
+
       interns.push(intern);
-      console.log(interns);
+      
       if (answers.addEmployee == "Engineer") {
         getEngineerInfo();
       } else if (answers.addEmployee == "Intern") {
@@ -171,9 +170,9 @@ function getInternInfo() {
         fs.writeFile(
           "myTeam.html",
           renderStart() +
-            renderManager(manager) +
-            renderEngineers(engineers) +
-            renderInterns(interns) +
+            man.renderManager(manager) +
+            eng.renderEngineers(engineers) +
+            int.renderInterns(interns) +
             renderEnd(),
           (err) => (err ? console.log(err) : console.log("Success!"))
         );
