@@ -5,6 +5,8 @@
 
   Use this app to generate a team to work in your projects and have quick access to their contact details
 
+Usage video link: https://drive.google.com/file/d/1gUEyDRuwykLL8ZBpPt6sZI0-KUoS3R57/view
+
 Github repository link: https://github.com/avpizarro/teamProfileGenerator.git
 
 Github pages link: https://avpizarro.github.io/teamProfileGenerator/
@@ -23,8 +25,6 @@ Github pages link: https://avpizarro.github.io/teamProfileGenerator/
 
   ## Usage
   Choose a manager for your team, enter their name, employee id, email and office number when prompted. Addmore employees, you have the choice between engineers and interns. Once all the team members details have been entered, choose the complete option to generate a webpage where you can see all the team members, click to email them and access the engineers github page.
-
-  Usage video link: https://drive.google.com/file/d/1N9lO82fQoPD9fmQV3Bf29vMJu9pK2DaB/view
 
   ## License
   This Source Code Form is subject to the terms of the  License. 
